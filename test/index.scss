@@ -2,20 +2,6 @@
 
 @import '../main';
 
-@include describe('Testing…') {
-  @include it('Works') {
-    @include assert {
-      @include output {
-        content: $content;
-      }
-
-      @include expect {
-        content: HELLOWORLD;
-      }
-    }
-  }
-}
-
 @include describe('mq-only') {
   @include it('should handle sm') {
     @include assert {
