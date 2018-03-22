@@ -28,3 +28,18 @@ $breakpoints: ('sm': 719, 'md': 1024) !default;
     @content;
   }
 }
+
+@mixin mq-smaller-than($breakpoint) {
+  @if $breakpoint == 'sm' {
+    @error '`#{$breakpoint}` is and invalid option. You probably mean `md`';
+  }
+  @if $breakpoint == 'md' {
+    @media (max-width: map-get($breakpoints, 'sm') + px) {
+      @content;
+    }
+  } @else if $breakpoint == 'lg' {
+    @media (max-width: map-get($breakpoints, 'md') + px) {
+      @content;
+    }
+  }
+}

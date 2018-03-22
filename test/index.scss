@@ -85,3 +85,37 @@
     }
   }
 }
+
+@include describe('mq-smaller-than') {
+  @include it('should handle md') {
+    @include assert {
+      @include output {
+        @include mq-smaller-than('md') {
+          color: green;
+        }
+      }
+
+      @include expect {
+        @media (max-width: 719px) {
+          color: green;
+        }
+      }
+    }
+  }
+
+  @include it('should handle lg') {
+    @include assert {
+      @include output {
+        @include mq-smaller-than('lg') {
+          color: red;
+        }
+      }
+
+      @include expect {
+        @media (max-width: 1024px) {
+          color: red;
+        }
+      }
+    }
+  }
+}
