@@ -119,3 +119,37 @@
     }
   }
 }
+
+@include describe('mq-orientation') {
+  @include it('should handle portrait') {
+    @include assert {
+      @include output {
+        @include mq-orientation('portrait') {
+          color: green;
+        }
+      }
+
+      @include expect {
+        @media (orientation: portrait) {
+          color: green;
+        }
+      }
+    }
+  }
+
+  @include it('should handle landscape') {
+    @include assert {
+      @include output {
+        @include mq-orientation('landscape') {
+          color: papayawhip;
+        }
+      }
+
+      @include expect {
+        @media (orientation: landscape) {
+          color: papayawhip;
+        }
+      }
+    }
+  }
+}

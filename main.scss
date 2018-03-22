@@ -43,3 +43,9 @@ $breakpoints: ('sm': 719, 'md': 1024) !default;
     }
   }
 }
+
+@mixin mq-orientation($orientation) {
+  @media (orientation: #{$orientation}) {
+    @content;
+  }
+}
