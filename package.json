@@ -1,0 +1,24 @@
+{
+  "name": "fizzion-media-queries",
+  "version": "0.0.1",
+  "description": "Useful utilities for building media-queries",
+  "main": "main.scss",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fizzion/fizzion-media-queries.git"
+  },
+  "keywords": [
+    "media queries",
+    "sass",
+    "fizzion"
+  ],
+  "author": "Alex Lemanski",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/fizzion/fizzion-media-queries/issues"
+  },
+  "homepage": "https://github.com/fizzion/fizzion-media-queries#readme"
+}
