@@ -6,6 +6,7 @@
  */
 
 $breakpoints: ('sm': 719, 'md': 1024) !default;
+$vertical-breakpoints: ('md': 529, 'lg': 775) !default;
 
 @mixin mq-only($breakpoint) {
   $mq-rules: null !default;
@@ -47,5 +48,17 @@ $breakpoints: ('sm': 719, 'md': 1024) !default;
 @mixin mq-orientation($orientation) {
   @media (orientation: #{$orientation}) {
     @content;
+  }
+}
+
+@mixin mq-vertical($breakpoint) {
+  @if $breakpoint == 'sm' {
+    @media only screen and (max-height: map-get($vertical-breakpoints, 'md') - 1px) {
+      @content;
+    }
+  } @else {
+    @media only screen and (min-height: map-get($vertical-breakpoints, $breakpoint) + px) {
+      @content;
+    }
   }
 }

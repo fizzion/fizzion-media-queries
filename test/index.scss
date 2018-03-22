@@ -153,3 +153,53 @@
     }
   }
 }
+
+@include describe('mq-vertical') {
+  @include it('should handle sm') {
+    @include assert {
+      @include output {
+        @include mq-vertical('sm') {
+          color: rebeccapurple;
+        }
+      }
+
+      @include expect {
+        @media only screen and (max-height: 528px) {
+          color: rebeccapurple;
+        }
+      }
+    }
+  }
+
+  @include it('should handle md') {
+    @include assert {
+      @include output {
+        @include mq-vertical('md') {
+          color: pink;
+        }
+      }
+
+      @include expect {
+        @media only screen and (min-height: 529px) {
+          color: pink;
+        }
+      }
+    }
+  }
+
+  @include it('should handle md') {
+    @include assert {
+      @include output {
+        @include mq-vertical('lg') {
+          color: silver;
+        }
+      }
+
+      @include expect {
+        @media only screen and (min-height: 775px) {
+          color: silver;
+        }
+      }
+    }
+  }
+}
