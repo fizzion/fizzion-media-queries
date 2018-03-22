@@ -12,7 +12,7 @@
       }
 
       @include expect {
-        @media (max-width: 719px) {
+        @media only screen and (max-width: 719px) {
           color: red;
         }
       }
@@ -28,7 +28,7 @@
       }
 
       @include expect {
-        @media (min-width: 720px) and (max-width: 1024px) {
+        @media only screen and (min-width: 720px) and (max-width: 1024px) {
           color: blue;
         }
       }
@@ -44,7 +44,7 @@
       }
 
       @include expect {
-        @media (min-width: 1025px) {
+        @media only screen and (min-width: 1025px) {
           color: green;
         }
       }
@@ -62,7 +62,7 @@
       }
 
       @include expect {
-        @media (min-width: 720px) {
+        @media only screen and (min-width: 720px) {
           color: green;
         }
       }
@@ -78,7 +78,7 @@
       }
 
       @include expect {
-        @media (min-width: 1025px) {
+        @media only screen and (min-width: 1025px) {
           color: red;
         }
       }
@@ -96,7 +96,7 @@
       }
 
       @include expect {
-        @media (max-width: 719px) {
+        @media only screen and (max-width: 719px) {
           color: green;
         }
       }
@@ -112,7 +112,7 @@
       }
 
       @include expect {
-        @media (max-width: 1024px) {
+        @media only screen and (max-width: 1024px) {
           color: red;
         }
       }

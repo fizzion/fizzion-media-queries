@@ -18,13 +18,13 @@ $breakpoints: ('sm': 719, 'md': 1024) !default;
     $mq-rules: '(min-width: #{map-get($breakpoints, 'md') + 1px})';
   }
 
-  @media #{$mq-rules} {
+  @media only screen and #{$mq-rules} {
     @content;
   }
 }
 
 @mixin mq-greater-than($breakpoint) {
-  @media (min-width: map-get($breakpoints, $breakpoint) + 1px) {
+  @media only screen and (min-width: map-get($breakpoints, $breakpoint) + 1px) {
     @content;
   }
 }
@@ -34,11 +34,11 @@ $breakpoints: ('sm': 719, 'md': 1024) !default;
     @error '`#{$breakpoint}` is and invalid option. You probably mean `md`';
   }
   @if $breakpoint == 'md' {
-    @media (max-width: map-get($breakpoints, 'sm') + px) {
+    @media only screen and (max-width: map-get($breakpoints, 'sm') + px) {
       @content;
     }
   } @else if $breakpoint == 'lg' {
-    @media (max-width: map-get($breakpoints, 'md') + px) {
+    @media only screen and (max-width: map-get($breakpoints, 'md') + px) {
       @content;
     }
   }
