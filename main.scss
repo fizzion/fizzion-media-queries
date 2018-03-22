@@ -5,4 +5,16 @@
  *   (https://github.com/fizzion/fizzion-media-queries/blob/master/LICENSE.md)
  */
 
-$breakpoints: (sm: 1, md: 12, lg: 16) !default;
+$breakpoints: ('sm': 719, 'md': 1023, 'lg': 1440) !default;
+
+//@mixin mq-only($breakpoint) {
+//  @if $breakpoint == sm {
+//    $mq-rules: '( max-width: #{map-get($breakpoints, $breakpoint)}; )';
+//  } @else if $breakpoint == sm {
+//    $mq-rules: '( max-width: #{map-get($breakpoints, $breakpoint)}; )';
+//  }
+//
+//  @media {
+//    @content;
+//  }
+//}
