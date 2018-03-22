@@ -22,3 +22,9 @@ $breakpoints: ('sm': 719, 'md': 1024) !default;
     @content;
   }
 }
+
+@mixin mq-greater-than($breakpoint) {
+  @media (min-width: map-get($breakpoints, $breakpoint) + 1px) {
+    @content;
+  }
+}
