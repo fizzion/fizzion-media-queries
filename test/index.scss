@@ -1,0 +1,67 @@
+@import 'true';
+
+@import '../main';
+
+@include describe('Testing…') {
+  @include it('Works') {
+    @include assert {
+      @include output {
+        content: $content;
+      }
+
+      @include expect {
+        content: HELLOWORLD;
+      }
+    }
+  }
+}
+
+@include describe('mq-only') {
+  @include it('should handle sm') {
+    @include assert {
+      @include output {
+        @include mq-only('sm') {
+          color: red;
+        }
+      }
+
+      @include expect {
+        @media (max-width: 719px) {
+          color: red;
+        }
+      }
+    }
+  }
+
+  @include it('should handle md') {
+    @include assert {
+      @include output {
+        @include mq-only('md') {
+          color: blue;
+        }
+      }
+
+      @include expect {
+        @media (min-width: 720px) and (max-width: 1024px) {
+          color: blue;
+        }
+      }
+    }
+  }
+
+  @include it('should handle lg') {
+    @include assert {
+      @include output {
+        @include mq-only('lg') {
+          color: green;
+        }
+      }
+
+      @include expect {
+        @media (min-width: 1025px) {
+          color: green;
+        }
+      }
+    }
+  }
+}

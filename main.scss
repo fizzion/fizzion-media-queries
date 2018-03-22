@@ -5,16 +5,22 @@
  *   (https://github.com/fizzion/fizzion-media-queries/blob/master/LICENSE.md)
  */
 
-$breakpoints: ('sm': 719, 'md': 1023, 'lg': 1440) !default;
+$breakpoints: ('sm': 719, 'md': 1024) !default;
 
-//@mixin mq-only($breakpoint) {
-//  @if $breakpoint == sm {
-//    $mq-rules: '( max-width: #{map-get($breakpoints, $breakpoint)}; )';
-//  } @else if $breakpoint == sm {
-//    $mq-rules: '( max-width: #{map-get($breakpoints, $breakpoint)}; )';
-//  }
-//
-//  @media {
-//    @content;
-//  }
-//}
+@mixin mq-only($breakpoint) {
+  $mq-rules: null !default;
+  @if $breakpoint == 'sm' {
+    $mq-rules: '(max-width: #{map-get($breakpoints, $breakpoint) + px})';
+  } @else if $breakpoint == 'md' {
+    $mq-rules: '(min-width: #{map-get($breakpoints, 'sm') + 1px})
+      and (max-width: #{map-get($breakpoints, $breakpoint) + px})';
+  } @else if $breakpoint == 'lg' {
+    $mq-rules: '(min-width: #{map-get($breakpoints, 'md') + 1px})';
+  }
+
+  @media #{$mq-rules} {
+    @content;
+  }
+}
+
+$content: HELLOWORLD;
