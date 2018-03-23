@@ -1,0 +1,205 @@
+@import 'true';
+
+@import '../main';
+
+@include describe('mq-only') {
+  @include it('should handle sm') {
+    @include assert {
+      @include output {
+        @include mq-only('sm') {
+          color: red;
+        }
+      }
+
+      @include expect {
+        @media only screen and (max-width: 719px) {
+          color: red;
+        }
+      }
+    }
+  }
+
+  @include it('should handle md') {
+    @include assert {
+      @include output {
+        @include mq-only('md') {
+          color: blue;
+        }
+      }
+
+      @include expect {
+        @media only screen and (min-width: 720px) and (max-width: 1024px) {
+          color: blue;
+        }
+      }
+    }
+  }
+
+  @include it('should handle lg') {
+    @include assert {
+      @include output {
+        @include mq-only('lg') {
+          color: green;
+        }
+      }
+
+      @include expect {
+        @media only screen and (min-width: 1025px) {
+          color: green;
+        }
+      }
+    }
+  }
+}
+
+@include describe('mq-larger-than') {
+  @include it('should handle sm') {
+    @include assert {
+      @include output {
+        @include mq-greater-than('sm') {
+          color: green;
+        }
+      }
+
+      @include expect {
+        @media only screen and (min-width: 720px) {
+          color: green;
+        }
+      }
+    }
+  }
+
+  @include it('should handle md') {
+    @include assert {
+      @include output {
+        @include mq-greater-than('md') {
+          color: red;
+        }
+      }
+
+      @include expect {
+        @media only screen and (min-width: 1025px) {
+          color: red;
+        }
+      }
+    }
+  }
+}
+
+@include describe('mq-smaller-than') {
+  @include it('should handle md') {
+    @include assert {
+      @include output {
+        @include mq-smaller-than('md') {
+          color: green;
+        }
+      }
+
+      @include expect {
+        @media only screen and (max-width: 719px) {
+          color: green;
+        }
+      }
+    }
+  }
+
+  @include it('should handle lg') {
+    @include assert {
+      @include output {
+        @include mq-smaller-than('lg') {
+          color: red;
+        }
+      }
+
+      @include expect {
+        @media only screen and (max-width: 1024px) {
+          color: red;
+        }
+      }
+    }
+  }
+}
+
+@include describe('mq-orientation') {
+  @include it('should handle portrait') {
+    @include assert {
+      @include output {
+        @include mq-orientation('portrait') {
+          color: green;
+        }
+      }
+
+      @include expect {
+        @media (orientation: portrait) {
+          color: green;
+        }
+      }
+    }
+  }
+
+  @include it('should handle landscape') {
+    @include assert {
+      @include output {
+        @include mq-orientation('landscape') {
+          color: papayawhip;
+        }
+      }
+
+      @include expect {
+        @media (orientation: landscape) {
+          color: papayawhip;
+        }
+      }
+    }
+  }
+}
+
+@include describe('mq-vertical') {
+  @include it('should handle sm') {
+    @include assert {
+      @include output {
+        @include mq-vertical('sm') {
+          color: rebeccapurple;
+        }
+      }
+
+      @include expect {
+        @media only screen and (max-height: 528px) {
+          color: rebeccapurple;
+        }
+      }
+    }
+  }
+
+  @include it('should handle md') {
+    @include assert {
+      @include output {
+        @include mq-vertical('md') {
+          color: pink;
+        }
+      }
+
+      @include expect {
+        @media only screen and (min-height: 529px) {
+          color: pink;
+        }
+      }
+    }
+  }
+
+  @include it('should handle md') {
+    @include assert {
+      @include output {
+        @include mq-vertical('lg') {
+          color: silver;
+        }
+      }
+
+      @include expect {
+        @media only screen and (min-height: 775px) {
+          color: silver;
+        }
+      }
+    }
+  }
+}

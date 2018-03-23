@@ -1,0 +1,64 @@
+/*!
+ * Fizzion Typography v0.0.1
+ * Copyright 2018 Alex Lemanski
+ * Licensed under MIT
+ *   (https://github.com/fizzion/fizzion-media-queries/blob/master/LICENSE.md)
+ */
+
+$breakpoints: ('sm': 719, 'md': 1024) !default;
+$vertical-breakpoints: ('md': 529, 'lg': 775) !default;
+
+@mixin mq-only($breakpoint) {
+  $mq-rules: null !default;
+  @if $breakpoint == 'sm' {
+    $mq-rules: '(max-width: #{map-get($breakpoints, $breakpoint) + px})';
+  } @else if $breakpoint == 'md' {
+    $mq-rules: '(min-width: #{map-get($breakpoints, 'sm') + 1px})
+      and (max-width: #{map-get($breakpoints, $breakpoint) + px})';
+  } @else if $breakpoint == 'lg' {
+    $mq-rules: '(min-width: #{map-get($breakpoints, 'md') + 1px})';
+  }
+
+  @media only screen and #{$mq-rules} {
+    @content;
+  }
+}
+
+@mixin mq-greater-than($breakpoint) {
+  @media only screen and (min-width: map-get($breakpoints, $breakpoint) + 1px) {
+    @content;
+  }
+}
+
+@mixin mq-smaller-than($breakpoint) {
+  @if $breakpoint == 'sm' {
+    @error '`#{$breakpoint}` is and invalid option. You probably mean `md`';
+  }
+  @if $breakpoint == 'md' {
+    @media only screen and (max-width: map-get($breakpoints, 'sm') + px) {
+      @content;
+    }
+  } @else if $breakpoint == 'lg' {
+    @media only screen and (max-width: map-get($breakpoints, 'md') + px) {
+      @content;
+    }
+  }
+}
+
+@mixin mq-orientation($orientation) {
+  @media (orientation: #{$orientation}) {
+    @content;
+  }
+}
+
+@mixin mq-vertical($breakpoint) {
+  @if $breakpoint == 'sm' {
+    @media only screen and (max-height: map-get($vertical-breakpoints, 'md') - 1px) {
+      @content;
+    }
+  } @else {
+    @media only screen and (min-height: map-get($vertical-breakpoints, $breakpoint) + px) {
+      @content;
+    }
+  }
+}
