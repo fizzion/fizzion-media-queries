@@ -13,8 +13,7 @@ $vertical-breakpoints: ('md': 529, 'lg': 775) !default;
   @if $breakpoint == 'sm' {
     $mq-rules: '(max-width: #{map-get($breakpoints, $breakpoint) + px})';
   } @else if $breakpoint == 'md' {
-    $mq-rules: '(min-width: #{map-get($breakpoints, 'sm') + 1px})
-      and (max-width: #{map-get($breakpoints, $breakpoint) + px})';
+    $mq-rules: '(min-width: #{map-get($breakpoints, 'sm') + 1px}) and (max-width: #{map-get($breakpoints, $breakpoint) + px})';
   } @else if $breakpoint == 'lg' {
     $mq-rules: '(min-width: #{map-get($breakpoints, 'md') + 1px})';
   }
